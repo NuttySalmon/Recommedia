@@ -41,13 +41,29 @@ router.post('/register', function(req, res){
 
 
 		User.createUser(newUser, function(err, user){  
-			if(err) throw err;
-			console.log(user);
+			if ( err && err.code !== 11000 ) {
+	    		console.log(err);
+	    		console.log(err.code);
+	    		throw err;
+ 			}
+
+			  //duplicate key
+			else if ( err && err.code === 11000 ) {
+			    req.flash('error', 'User already exists');
+			    console.log(err);
+			    res.redirect('/users/register');
+			    //return;
+			 }
+
+			else {console.log(user);
+				req.flash('success_msg', 'You are registered and can now login.');
+				res.redirect('/users/login');
+			}
 		});
 
-		req.flash('success_msg', 'You are registered and can now login.');
+		
 
-		res.redirect('/users/login');
+		
 	}
 
 });
