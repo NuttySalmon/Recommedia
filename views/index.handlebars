@@ -1,0 +1,42 @@
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+<link href="/css/jumbotron.css" rel="stylesheet">
+<main role="main">
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Welcome, {{user.name}}!</h1>
+
+          <p> Here is your info.
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          	<h3>Username</h3> 
+          	<p>{{user.username}}</p>
+
+
+          	<h3> Password hash </h3>
+          	<p> {{user.password}}</p>
+
+        </div>
+      </div>
+</main>
+
+<hr>
+<footer>
+ <p class="text-muted text-center">
+      &copy; Team10 2018
+ </p>
+</footer>
+<!--
+<script>  
+	var test = {
+		name: "test"
+	}
+
+    document.getElementById("info").innerHTML = "Welcome " + test.name + "." + user.name;
+
+</script>  
+-->
