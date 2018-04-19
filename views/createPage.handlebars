@@ -1,0 +1,83 @@
+ <link href="/css/floatinglable.css" rel="stylesheet" >
+{{#if errors}}
+    {{#each errors}}
+    <div class = "alert alert-danger"> {{msg}} </div>
+    {{/each}}
+{{/if}}
+
+<form class="form-create-page" method="post" action="/pages/create" onsubmit="return validateForm()"novalidate >
+  
+  <div class="text-center mb-4">
+    <h1 class="h3 mb-3 font-weight-normal">Create a new page</h1>
+  </div>
+
+  <div class="form-label-group">
+    <input type="text" id="title" name="title" class="form-control" placeholder="Title" required autofocus>
+    <div class="invalid-feedback">
+        Title is required.
+     </div>
+    <label for="title">Title</label>
+  </div>
+  
+  <div class="form-group">
+  <label for="type">Type:</label>
+  <select class="form-control" name="type" id="type" required>
+    <option disabled selected value> -- select an option -- </option>
+    <option>Movie</option>
+    <option>Show</option>
+    <option>Book</option>
+    <option>Music</option>
+  </select>
+    <div class="invalid-feedback">
+        Media type is required.
+    </div>
+  </div> 
+
+  <div class="form-group">
+    <label for="details">Details:</label>
+    <textarea class="form-control" rows="5" name="details" id="details"></textarea>
+  </div> 
+
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
+
+   <hr>
+ <p class="text-muted text-center">
+      &copy; Team10 2018
+ </p>
+ </form>
+
+
+
+
+<script>
+
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('form-create-page');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+
+
+
+
+
+
+
+
