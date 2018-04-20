@@ -3,19 +3,20 @@ var router = express.Router();
 
 
 //Get Homepage
-router.get('/', ensureAuthenticated, function(req,res){
+router.get('/', ensureAuthenticated, function(req, res) {
 
-	res.render('index');
-	
-	console.log(req.user);}
-);
+    res.render('index');
 
-function ensureAuthenticated(req, res, next){
-	if(req.isAuthenticated()){
-		return next();
-	} else {
-		res.redirect('/users/login');
-	}
+    console.log(req.user);
+});
+
+//redirect to login page if not authenticated
+function ensureAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    } else {
+        res.redirect('/users/login');
+    }
 }
 
 module.exports = router;
